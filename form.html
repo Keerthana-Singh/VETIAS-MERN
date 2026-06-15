@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration - Local Storage</title>
+</head>
+<body>
+
+    <h2>Student Registration Form</h2>
+
+    <label>Name:</label>
+    <input type="text" id="name">
+    <br><br>
+
+    <label>Age:</label>
+    <input type="number" id="age">
+    <br><br>
+
+    <label>Department:</label>
+    <input type="text" id="department">
+    <br><br>
+
+    <button onclick="saveStudent()">
+        Save Student
+    </button>
+
+    <button onclick="clearStudent()">
+        Clear Data
+    </button>
+
+    <hr>
+
+    <h3>Stored Student Details</h3>
+
+    <div id="output">
+        No student data found.
+    </div>
+
+    <script>
+
+        // Display data when page loads
+        displayStudent();
+
+        function saveStudent() {
+
+            const student = {
+
+                name: document.getElementById("name").value,
+
+                age: document.getElementById("age").value,
+
+                department: document.getElementById("department").value
+
+            };
+
+            // Convert object to JSON string and store
+            localStorage.setItem(
+                "student",
+                JSON.stringify(student)
+            );
+
+            alert("Student Saved Successfully!");
+
+            displayStudent();
+        }
+
+        function displayStudent() {
+
+            const storedStudent =
+                JSON.parse(
+                    localStorage.getItem("student")
+                );
+
+            if(storedStudent) {
+
+                document.getElementById("output").innerHTML = `
+                    <p><strong>Name:</strong> ${storedStudent.name}</p>
+                    <p><strong>Age:</strong> ${storedStudent.age}</p>
+                    <p><strong>Department:</strong> ${storedStudent.department}</p>
+                `;
+
+            } else {
+
+                document.getElementById("output").innerHTML =
+                    "No student data found.";
+            }
+        }
+
+        function clearStudent() {
+
+            localStorage.removeItem("student");
+
+            document.getElementById("output").innerHTML =
+                "No student data found.";
+
+            alert("Student Data Removed!");
+        }
+
+    </script>
+
+</body>
+</html> 

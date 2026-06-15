@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Callback Example</h2>
+
+<script>
+
+function fetchStudent(displayStudent){
+
+    console.log("Fetching Student Data...");
+
+    setTimeout(function(){
+  console.log("Settimeout inside");
+        let student = "Arun";
+
+        displayStudent(student); // displayStudent("arun")
+
+    },3000);
+    console.log("Settimeout outside");
+    
+
+}
+
+function displayStudent(student){
+
+    console.log("Student Name:",student);
+
+}
+
+fetchStudent(displayStudent); // fetchStudent(callback)
+
+</script>
+
+</body>
+</html>

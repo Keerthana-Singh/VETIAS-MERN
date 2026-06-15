@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+const studentPromise =
+new Promise(function(resolve,reject){
+
+    let success = false;
+
+    setTimeout(function(){
+
+        if(success){
+
+            resolve("Student Loaded Successfully");
+
+        }else{
+
+            reject("Failed To Load Student");
+
+        }
+
+    },3000);
+
+});
+
+studentPromise
+.then(function(result){
+
+    console.log(result);
+
+})
+.catch(function(error){
+
+    console.log(error);
+
+});
+
+</script>
+
+</body>
+</html> 
