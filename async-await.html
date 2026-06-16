@@ -7,8 +7,10 @@
 function getStudent(){
 
     return new Promise(function(resolve){
+          console.log("Loading Promise...");
 
         setTimeout(function(){
+              console.log("Loading SetTimeout...");
 
             resolve("Arun");
 
@@ -23,6 +25,7 @@ async function displayStudent(){
     console.log("Loading Student...");
 
     let student = await getStudent();
+      console.log("Assigned Value...");
 
     console.log(student);
 
